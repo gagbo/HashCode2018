@@ -1,7 +1,12 @@
 #+TITLE: Google HashCode 2018 des Crocos
 
-* Use
+Archive of the HashCode 2018 online qualification round
+
+* Usage
+#+BEGIN_SRC bash
+cd src
 make tests
+#+END_SRC
 
 * Dependencies
-Pas vraiment
+GNU make
