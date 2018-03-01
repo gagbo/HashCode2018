@@ -18,6 +18,8 @@ void Vehicle::add_ride(const Ride & affected_ride, int bonus) {
   avail_pos = affected_ride.f_pos;
   score += added_score;
 
+  // Used to output the new state of the Vehicle after taking the course
+  // Leave commented out for the larger cases
   /*
   std::cerr << "New avail pos = " << avail_pos.row << " " << avail_pos.col
             << " ; new avail_time = " << avail_time
@@ -26,23 +28,7 @@ void Vehicle::add_ride(const Ride & affected_ride, int bonus) {
             */
 }
 
-bool Vehicle::can_affect_ride(const Ride & affected_ride) const {
-  int theoretical_time = avail_time;
-  theoretical_time += distance(avail_pos, affected_ride.s_pos);
-  theoretical_time += affected_ride.dist;
-  return theoretical_time < affected_ride.max_finish;
-}
-
-bool Vehicle::can_affect_ride_and_get_bonus(const Ride & affected_ride) const {
-  int theoretical_time = avail_time;
-  theoretical_time += distance(avail_pos, affected_ride.s_pos);
-  int th_start_time = theoretical_time;
-  theoretical_time += affected_ride.dist;
-  return (theoretical_time < affected_ride.max_finish
-          && th_start_time <= affected_ride.min_start);
-}
-
-int Vehicle::potential_score(const Ride& pot_ride, int bonus) {
+int Vehicle::potential_score(const Ride& pot_ride, int bonus) const {
   int pot_score = 0;
 
   int theoretical_time = avail_time;
