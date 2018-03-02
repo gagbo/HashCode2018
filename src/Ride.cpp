@@ -11,7 +11,7 @@ void Ride::print() const {
   std::cerr << "Ride no " << id << " : \n";
   std::cerr << "Start : " << s_pos.row << ", " << s_pos.col << "\n";
   std::cerr << "Finish : " << f_pos.row << ", " << f_pos.col << "\n";
-  std::cerr << "Must start at (or after) " << min_start <<
-      " and finish before " << max_finish << " (distance = " << dist << ")\n";
+  std::cerr << "Must start at (or after) " << min_start << " and finish before "
+            << max_finish << " (distance = " << dist << ")\n";
   return;
 }
