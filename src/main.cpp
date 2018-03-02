@@ -37,13 +37,18 @@ int main() {
   }
 
   // Do stuff now that problem is read
+
+  // Stub : Add all rides to the first car
   /*
   for (int i = 0; i < ride_count; ++i) {
     vehicles[0].add_ride(rides_map.find(i)->second, start_bonus);
   }
   */
 
-  /* bool work_left_to_do = (rides_map.size() != 0); */
+  // Right now, we add 1 ride per loop, where the added ride is the best of
+  // all (car, available_ride) pair
+  //
+  // The old version was just adding the best ride for each car in a loop
   bool has_affected_car = true;
   int compteur = 0;
   while (rides_map.size() != 0 && has_affected_car) {
@@ -56,9 +61,6 @@ int main() {
     if (compteur % 100 == 0) {
       std::cerr << "Affecting " << compteur << "th ride\n";
     }
-    /* if (rides_map.size() == 0) { */
-    /*   break; */
-    /* } */
 
     for (int i = 0; i < fleet_size; ++i) {
       for (auto it : rides_map) {
