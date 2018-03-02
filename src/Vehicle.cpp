@@ -61,6 +61,8 @@ void Vehicle::print() const {
     if (rides_id.size() >= 1) {
       std::cout << rides_id[rides_id.size() - 1] << "\n";
     }
+  } else {
+    std::cout << "\n";
   }
   return;
 }
