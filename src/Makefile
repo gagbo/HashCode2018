@@ -45,4 +45,4 @@ test_d: $(BINARY)
 test_e: $(BINARY)
 	./$(BINARY) < ../input/e_high_bonus.in > ../input/e_high_bonus.out
 
-.PHONY: clean test small smallest $(SOURCES)
+.PHONY: clean tests test_a test_b test_c test_d test_e $(SOURCES)
