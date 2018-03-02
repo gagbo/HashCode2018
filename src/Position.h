@@ -13,6 +13,8 @@ struct Position {
   Position(int r, int c) : row(r), col(c) { ; }
   // Default constructor
   Position() : row(0), col(0) { ; }
+  // Destructor
+  ~Position() { ; }
 };
 
 // Compute the Manhattan distance between 2 positions

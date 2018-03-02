@@ -23,6 +23,8 @@ struct Vehicle {
   Vehicle() : id(0), avail_pos(0, 0), avail_time(0), score(0) { ; }
   // Overloaded constructor
   Vehicle(int _id) : id(_id), avail_pos(0, 0), avail_time(0), score(0) { ; }
+  // Destructor
+  ~Vehicle() { ; }
 
   // Add a ride to the car's queue.
   // Use the 'bonus' argument to properly update the score of the car if it
