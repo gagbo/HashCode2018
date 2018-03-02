@@ -3,13 +3,15 @@
 void Vehicle::add_ride(const Ride & affected_ride, int bonus) {
   rides_id.push_back(affected_ride.id);
   int added_score = 0;
-  bool got_bonus(false);
+  // To uncomment with the std::cerr block below
+  // bool got_bonus(false);
   avail_time += distance(avail_pos, affected_ride.s_pos);
   if (avail_time < affected_ride.min_start) {
     int wait_time = affected_ride.min_start - avail_time;
     avail_time += wait_time;
     added_score += bonus;
-    got_bonus = true;
+    // To uncomment with the std::cerr block below
+    // got_bonus = true;
   }
   avail_time += affected_ride.dist;
   if (avail_time <= affected_ride.max_finish) {
