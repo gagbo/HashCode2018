@@ -120,7 +120,9 @@ int Vehicle::find_and_affect_ride(const std::map<int, Ride> &rides_map,
 
 void Vehicle::update_priority() {
   // The less rides we have, the higher the priority
-  priority = -1 * rides_id.size();
+  // priority = -1 * rides_id.size();
+  // The earlier the car is ready, the higher the priority;
+  priority = 1000000000 - avail_time;
 }
 
 void Vehicle::make_unavailable() {
