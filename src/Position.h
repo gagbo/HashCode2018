@@ -9,6 +9,13 @@ struct Position {
   // Column index (given second in (r,c) tuples in Google's syntax)
   int col;
 
+  // Assignment operator
+  inline Position& operator=(const Position& rhs) {
+    row = rhs.row;
+    col = rhs.col;
+    return *this;
+  }
+
   // Overloaded constructor
   Position(int r, int c) : row(r), col(c) { ; }
   // Default constructor

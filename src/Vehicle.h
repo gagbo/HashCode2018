@@ -5,6 +5,7 @@
 #include "Ride.h"
 #include <map>
 #include <vector>
+#include <limits>
 
 // Class that represent a car of the fleet
 struct Vehicle {
@@ -16,13 +17,50 @@ struct Vehicle {
   int avail_time;
   // The score this car contributes to the fleet
   int score;
+  // The number of rides taken with bonus
+  int ride_with_bonus;
   // The array of the (ordered) IDs of the rides this car plans
   std::vector<int> rides_id;
+  // The priority of the vehicle in the fleet
+  int priority;
+  // Boolean that tells if the car can take any more ride
+  bool can_take_ride;
 
   // Default constructor
-  Vehicle() : id(0), avail_pos(0, 0), avail_time(0), score(0) { ; }
+  Vehicle()
+      : id(0),
+        avail_pos(0, 0),
+        avail_time(0),
+        score(0),
+        ride_with_bonus(0),
+        priority(0),
+        can_take_ride(true) {
+      ;
+  }
   // Overloaded constructor
-  Vehicle(int _id) : id(_id), avail_pos(0, 0), avail_time(0), score(0) { ; }
+  Vehicle(int _id)
+      : id(_id),
+        avail_pos(0, 0),
+        avail_time(0),
+        score(0),
+        ride_with_bonus(0),
+        priority(0),
+        can_take_ride(true) {
+      ;
+  }
+  // Copy constructor
+  Vehicle(const Vehicle &other) {
+    id = other.id;
+    avail_pos = other.avail_pos;
+    avail_time = other.avail_time;
+    score = other.score;
+    ride_with_bonus = other.ride_with_bonus;
+    priority = other.priority;
+    rides_id = other.rides_id;
+    can_take_ride = other.can_take_ride;
+  }
+  // Assignment operator
+  Vehicle &operator=(const Vehicle &rhs);
   // Destructor
   ~Vehicle() { ; }
 
@@ -44,6 +82,20 @@ struct Vehicle {
 
   // Print the car rides and the score it contributes to stderr
   void printDebug() const;
+
+  // Update the priority of the car for the priority queue
+  void update_priority();
+
+  // Reduce priority to minimum and set can_take_ride to false
+  void make_unavailable();
+
+  // Comparison operators for the priority queue
+  inline bool operator>(const Vehicle &rhs) const {
+    return priority > rhs.priority;
+  }
+  inline bool operator<(const Vehicle &rhs) const {
+    return priority < rhs.priority;
+  }
 };
 
 #endif // _VEHICLE_H_
