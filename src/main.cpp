@@ -67,10 +67,9 @@ int main() {
         current_car.make_unavailable();
         fleet.push(current_car);
       }
-    } while (!current_car.can_take_ride && cars_left >= 0);
+    } while (!current_car.can_take_ride && cars_left > 0);
 
-    if (cars_left < 0) {
-      fleet.push(current_car);
+    if (cars_left == 0) {
       break;
     }
 
